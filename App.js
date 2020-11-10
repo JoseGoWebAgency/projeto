@@ -1,20 +1,27 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack' //tem que declarar o tipo de navegação já que está separada
+
+import Home from './src/pages/home'
+import Eventos from './src/pages/eventos'
+
+const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
-    <NavigationContainer>{/* aqui entram as stacks
-      
-      */}</NavigationContainer>
+    <NavigationContainer>{
+        <Stack.Navigator>
+
+          <Stack.Screen name="Home"  component={Home}/>
+          <Stack.Screen name="Eventos"  component={Eventos}/>
+
+
+        </Stack.Navigator>
+
+      }</NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
