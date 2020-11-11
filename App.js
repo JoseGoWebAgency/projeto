@@ -3,8 +3,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack' //tem que declarar o tipo de navegação já que está separada
 
-import Home from './src/pages/home'
-import Eventos from './src/pages/eventos'
+import Home from './src/pages/Home'
+import Eventos from './src/pages/Eventos'
 
 const Stack = createStackNavigator();
 
