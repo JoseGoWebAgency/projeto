@@ -20,12 +20,22 @@ export default function App() {
           <Stack.Screen
               name="Home"
               component={Home}
-              options={{ title: 'Home',}}
+              options={{
+                  title: 'Home',
+                  headerStyle:{backgroundColor:'#111111'},
+                  headerTitleStyle:{color:'#F6F6F6'}
+                 }}
+              
             />
 
           <Stack.Screen
             name="Eventos"
             component={Eventos} 
+            options={{
+              title: 'Eventos',
+              headerStyle:{backgroundColor:'#111111'},
+              headerTitleStyle:{color:'#F6F6F6'}
+             }}
           />
 
 
