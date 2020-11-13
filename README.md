@@ -1,7 +1,7 @@
 # projeto
 Novo repositório privado para acompanhamento do projeto web app
 
-Para testar faça o download do app expo, na google playstore,  no seu telemóvel. Depois o download do projeto no repositório.
+Para testar faça o download do app expo, na google playstore,  no seu telemóvel. Depois o download do projeto deste repositório.
 
 Em seguida abra a pasta do projeto num terminal e digite os seguintes comandos:
 
