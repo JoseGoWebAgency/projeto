@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, Button} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Styles from './styles.js'
+import Styles from '../styles.js'
 
 export default function Home({navigation}) {
 
