@@ -1,9 +1,13 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {View, Text, Button, TextInput} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Styles from '../styles.js'
 
-export default function Home({navigation}) {
+
+
+export default function Login() {
+
+    const [value, onChangeText] = React.useState('Usuário');
 
     return(
 
@@ -12,23 +16,22 @@ export default function Home({navigation}) {
             <View>
 
                 <Text style= {Styles.textoGoWeb}>
-                    Web App Go Web!
+                    Acesse já a tua conta!
                 </Text>
 
-                <Button
-                    style={Styles.btnGoWeb}
-                    title = "Criar Conta"
-                    onPress={ () => navigation.navigate('Eventos')} 
-                    color="#D0DD27"
+                <TextInput
+                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                     onChangeText={text => onChangeText(text)}
+                     value={value}
                 />
+
                     
                 <View  style={Styles.viewMargin}  />
                 <Button
                     style={Styles.btnGoWeb}
-                    title='Iniciar sessão'
+                    title='Iniciar'
                     color="#D0DD27"
-                    onPress={ () => navigation.navigate('Login')} 
-                    //
+                    //colocar função onpress
                 />
 
             </View>
@@ -38,3 +41,5 @@ export default function Home({navigation}) {
 
     
 }
+
+

@@ -5,6 +5,8 @@ import {createStackNavigator} from '@react-navigation/stack'
 
 import Home from './src/pages/Home'
 import Eventos from './src/pages/Eventos'
+import Login from './src/pages/Login'
+
 
 
 const Stack = createStackNavigator();
@@ -33,6 +35,16 @@ export default function App() {
             component={Eventos} 
             options={{
               title: 'Eventos',
+              headerStyle:{backgroundColor:'#111111'},
+              headerTitleStyle:{color:'#F6F6F6'}
+             }}
+          />
+
+          <Stack.Screen
+            name="Login"
+            component={Login} 
+            options={{
+              title: 'Login',
               headerStyle:{backgroundColor:'#111111'},
               headerTitleStyle:{color:'#F6F6F6'}
              }}
