@@ -6,6 +6,8 @@ import {createStackNavigator} from '@react-navigation/stack'
 import Home from './src/pages/Home'
 import Eventos from './src/pages/Eventos'
 import Login from './src/pages/Login'
+import SignIn from './src/pages/SignIn'
+
 
 
 
@@ -49,6 +51,17 @@ export default function App() {
               headerTitleStyle:{color:'#F6F6F6'}
              }}
           />
+
+            <Stack.Screen
+            name="SignIn"
+            component={SignIn} 
+            options={{
+              title: 'SignIn',
+              headerStyle:{backgroundColor:'#111111'},
+              headerTitleStyle:{color:'#F6F6F6'}
+             }}
+
+            />
 
 
         </Stack.Navigator>

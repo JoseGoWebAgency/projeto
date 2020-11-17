@@ -18,11 +18,12 @@ export default function Home({navigation}) {
                 <Button
                     style={Styles.btnGoWeb}
                     title = "Criar Conta"
-                    onPress={ () => navigation.navigate('Eventos')} 
+                    onPress={ () => navigation.navigate('SignIn')} 
                     color="#D0DD27"
                 />
                     
                 <View  style={Styles.viewMargin}  />
+                
                 <Button
                     style={Styles.btnGoWeb}
                     title='Iniciar sessão'
