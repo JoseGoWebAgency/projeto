@@ -21,7 +21,7 @@ export default class SignIn extends React.Component {
 
         <Formik
 
-          initialValues={{ name: '', email: '', contact: '', password: ''}}
+          initialValues={{ name: '', email: '', contact: '', password: '',confirmPassword:'',}}
 
           validationSchema={Yup.object({
 
@@ -44,6 +44,10 @@ export default class SignIn extends React.Component {
                 .matches(/(?=.*[a-z])/, 'one lowercase required!')
                 .matches(/(?=.*[A-Z])/, 'one uppercase required!')
                 .matches(/(?=.*[0-9])/, 'one number required!'),
+
+            confirmPassword: Yup.string()
+              .required('you must confirm the password')
+              .oneOf([Yup.ref('password')],'password must match !'),
           })}
 
           onSubmit={(values, formikActions) => {
@@ -100,7 +104,6 @@ export default class SignIn extends React.Component {
 
               <View  style={Styles.viewMargin}  />
 
-
               <TextInput
                 onChangeText={props.handleChange('contact')}
                 onBlur={props.handleBlur('contact')}
@@ -132,13 +135,36 @@ export default class SignIn extends React.Component {
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
+                  this.confirmPasswordInput.focus()
+
                 }}
+
               />
+
               {props.touched.password && props.errors.password ? (
                 <Text style={styles.error}>{props.errors.password}</Text>
               ) : null}
 
               <View  style={Styles.viewMargin}  />
+
+              <TextInput secureTextEntry={true}
+                onChangeText={props.handleChange('confirmPassword')}
+                onBlur={props.handleBlur('confirmPassword')}
+                value={props.values.confirmPassword}
+                placeholder='Confirme a senha'
+                style={styles.input}
+                ref={el => this.confirmPasswordInput = el}
+                onSubmitEditing={ () => {
+
+                  //cenas, cenas -- faltou o props abaixo!!!! + a view vazia
+                }}
+                />
+
+                {props.touched.confirmPassword && props.errors.confirmPassword ? (
+                    <Text style={styles.error}>  {props.errors.confirmPassword} </Text>
+                ): null}
+
+                <View style={Styles.viewMargin} />
 
 
               <Button
