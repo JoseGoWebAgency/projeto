@@ -23,7 +23,7 @@ export default class Eventos extends Component {
     render() {
 
     
-            //faltou fazer o map do array
+            
 
         return(
 
