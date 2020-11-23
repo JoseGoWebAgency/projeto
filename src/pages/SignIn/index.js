@@ -12,6 +12,8 @@ export default class SignIn extends React.Component {
 
   emailInput = null;
 
+  
+
   render() {
     return (
       <SafeAreaView style={Styles.containerGoWeb}>
@@ -110,7 +112,7 @@ export default class SignIn extends React.Component {
                 value={props.values.contact}
                 placeholder="Contacto"
                 style={styles.input}
-                ref={el => this.contactInput = el}//focus em teste!! -------> funciona!!!!
+                ref={el => this.contactInput = el}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
@@ -156,7 +158,7 @@ export default class SignIn extends React.Component {
                 ref={el => this.confirmPasswordInput = el}
                 onSubmitEditing={ () => {
 
-                  //cenas, cenas -- faltou o props abaixo!!!! + a view vazia
+                  //cenas, cenas 
                 }}
                 />
 
@@ -166,9 +168,11 @@ export default class SignIn extends React.Component {
 
                 <View style={Styles.viewMargin} />
 
-
               <Button
-                onPress={props.handleSubmit}
+                onPress={() => {
+                  this.props.navigation.navigate('Eventos')
+                  props.handleSubmit
+                }}
                 color="#D0DD27"
                 mode="contained"
                 loading={props.isSubmitting}
