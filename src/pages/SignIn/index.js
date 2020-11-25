@@ -7,12 +7,9 @@ import * as Yup from 'yup';
 
 import Styles from '../styles.js'
 
-
 export default class SignIn extends React.Component {
 
-  emailInput = null;
-
-  
+  emailInput = null;  
 
   render() {
     return (
@@ -23,7 +20,7 @@ export default class SignIn extends React.Component {
 
         <Formik
 
-          initialValues={{ name: '', email: '', contact: '', password: '',confirmPassword:'',}}
+          initialValues={{ name: '', email: '', contact: '', password: '', confirmPassword:''}}
 
           validationSchema={Yup.object({
 
@@ -54,21 +51,23 @@ export default class SignIn extends React.Component {
 
           onSubmit={(values, formikActions) => {
                 setTimeout(() => {
-                    Alert.alert(JSON.stringify(values));
+                    Alert.alert(JSON.stringify(values))
                     // Important: Make sure to setSubmitting to false so our loading indicator
                     // goes away.
-                    formikActions.setSubmitting(false);
+                    formikActions.setSubmitting(false); //colocar validação antes da navegação
+                    
+                    this.props.navigation.navigate('Eventos');
                 }, 500);
           }}>
 
-          {props => (
+          {({ handleChange, handleReset, handleBlur, handleSubmit, touched, errors, values, isSubmitting }) => (
 
             <View>
 
              <TextInput
-                onChangeText={props.handleChange('name')}
-                onBlur={props.handleBlur('name')}
-                value={props.values.name}
+                onChangeText={handleChange('name')}
+                onBlur={handleBlur('name')}
+                value={values.name}
                 autoFocus
                 placeholder="Usuário"
                 style={styles.input}
@@ -78,17 +77,17 @@ export default class SignIn extends React.Component {
                   this.emailInput.focus()
                 }}
               />
-              {props.touched.name && props.errors.name ? (
-                <Text style={styles.error}>{props.errors.name}</Text>
+              {touched.name && errors.name ? (
+                <Text style={styles.error}>{errors.name}</Text>
               ) : null}
 
              <View  style={Styles.viewMargin}  />
                 
                    
               <TextInput
-                onChangeText={props.handleChange('email')}
-                onBlur={props.handleBlur('email')}
-                value={props.values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
                 placeholder="Email "
                 style={styles.input}
                 ref={el => this.emailInput = el}
@@ -100,16 +99,16 @@ export default class SignIn extends React.Component {
                 
               /> 
 
-              {props.touched.email && props.errors.email ? (
-                <Text style={styles.error}>{props.errors.email}</Text>
+              {touched.email && errors.email ? (
+                <Text style={styles.error}>{errors.email}</Text>
               ) : null}
 
               <View  style={Styles.viewMargin}  />
 
               <TextInput
-                onChangeText={props.handleChange('contact')}
-                onBlur={props.handleBlur('contact')}
-                value={props.values.contact}
+                onChangeText={handleChange('contact')}
+                onBlur={handleBlur('contact')}
+                value={values.contact}
                 placeholder="Contacto"
                 style={styles.input}
                 ref={el => this.contactInput = el}
@@ -120,17 +119,17 @@ export default class SignIn extends React.Component {
 
                 }}
               />
-              {props.touched.contact && props.errors.contact ? (
-                <Text style={styles.error}>{props.errors.contact}</Text>
+              {touched.contact && errors.contact ? (
+                <Text style={styles.error}>{errors.contact}</Text>
               ) : null}
 
               <View  style={Styles.viewMargin}  />
                 
 
               <TextInput secureTextEntry={true}
-                onChangeText={props.handleChange('password')}
-                onBlur={props.handleBlur('password')}
-                value={props.values.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values.password}
                 placeholder="Senha"
                 style={styles.input}
                 ref={el => this.passwordInput = el}
@@ -143,16 +142,16 @@ export default class SignIn extends React.Component {
 
               />
 
-              {props.touched.password && props.errors.password ? (
-                <Text style={styles.error}>{props.errors.password}</Text>
+              {touched.password && errors.password ? (
+                <Text style={styles.error}>{errors.password}</Text>
               ) : null}
 
               <View  style={Styles.viewMargin}  />
 
               <TextInput secureTextEntry={true}
-                onChangeText={props.handleChange('confirmPassword')}
-                onBlur={props.handleBlur('confirmPassword')}
-                value={props.values.confirmPassword}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={handleBlur('confirmPassword')}
+                value={values.confirmPassword}
                 placeholder='Confirme a senha'
                 style={styles.input}
                 ref={el => this.confirmPasswordInput = el}
@@ -162,34 +161,34 @@ export default class SignIn extends React.Component {
                 }}
                 />
 
-                {props.touched.confirmPassword && props.errors.confirmPassword ? (
-                    <Text style={styles.error}>  {props.errors.confirmPassword} </Text>
+                {touched.confirmPassword && errors.confirmPassword ? (
+                    <Text style={styles.error}>  {errors.confirmPassword} </Text>
                 ): null}
 
                 <View style={Styles.viewMargin} />
 
               <Button
-                onPress={() => {
-                  this.props.navigation.navigate('Eventos')
-                  props.handleSubmit
-                }}
+                onPress={
+                  handleSubmit
+                }
                 color="#D0DD27"
                 mode="contained"
-                loading={props.isSubmitting}
-                disabled={props.isSubmitting}
+                loading={isSubmitting}
+                disabled={isSubmitting}
                 style={Styles.btnGoWeb}
                 title='Submit'
-                
+                {...{ isSubmitting }}
+            
                 />
 
                 <View  style={Styles.viewMargin}  />
 
               
               <Button
-                onPress={props.handleReset}
+                onPress={handleReset}
                 color="#D0DD27"
                 mode="outlined"
-                disabled={props.isSubmitting}
+                disabled={isSubmitting}
                 style={Styles.btnGoWeb}
                 title='reset'
                 />
