@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {View, Text, Button, Image} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Styles from '../styles.js'
 
@@ -10,6 +10,10 @@ export default function Home({navigation}) {
 
         <SafeAreaView style= {Styles.containerGoWeb}>
             <View>
+
+                <Image source={require("../../../assets/icon.png")}>
+
+                </Image>
 
                 <Text style= {Styles.textoGoWeb}>
                     Web App Go Web!
